@@ -15,8 +15,9 @@ public class Driver_Test {
 			System.out.println("SQLException" + ex);
 		}	catch(Exception ex) {
 			System.out.println("Exception" + ex.getMessage());
+			
 		}
-		
+		//추가본
 		
 	}
 
