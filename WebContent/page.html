@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입 홈페이지</title>
+
+<style>
+table {
+	width: 100%;
+	border: 1px;
+	border-collapse: collapse;
+}
+tr, td {
+	border: 1px solid;
+	padding: 10px;
+}
+</style>
+
+</head>
+<body>
+	
+	<p>
+		<strong> ★ 기본정보 </strong>
+	</p>
+	<form action = "12_Week_2.jsp" method = "post">
+		<table>
+			<tr>
+				<td align="center" width=200px height=40px bgcolor="gray"><font
+					color="white"> 이름 </font></td>
+				<td><input type="text" name="student_name"></td>
+			</tr>
+			<tr>
+				<td align="center" height=40px bgcolor="gray"><font
+					color="white"> 학번 </font></td>
+				<td><input type="text" name="student_number"></td>
+			</tr>
+			<tr>
+				<td align="center" height=40px bgcolor="gray"><font
+					color="white"> 아이디 </font></td>
+				<td><input type="text" name="student_id"> <input type="button"
+					name="버튼" value="아이디중복확인"> <br> 
+					※ 6~16자까지 영문자(소문자), 숫자사용 가능합니다.</td>
+			</tr>
+			<tr>
+				<td align="center" height=40px bgcolor="gray"><font
+					color="white"> 비밀번호 </font></td>
+				<td><input type="password" name="student_pw"> <br>
+				 ※ 10~ 15자리 영문자, 숫자, 특수문자 조합을 사용해야 합니다.</td>
+			</tr>
+			<tr>
+				<td align="center" height=40px bgcolor="gray"><font
+					color="white"> 비밀번호확인 </font></td>
+				<td><input type="password" name="student_pw_co"></td>
+			</tr>
+			<tr>
+				<td align="center" height=40px bgcolor="gray"><font
+					color="white"> 이메일 </font></td>
+				<td><input type="text" name="student_Email"> @ <input type="text"
+					name="student_Email2"> <select name="student_Email_co">
+						<option value="">선택</option>
+						<option value="네이버">naver.com</option>
+						<option value="다음">daum.net</option>
+						<option value="구글">google.com</option>
+				</select>
+			<tr>
+				<td align="center" height=60px bgcolor="gray"><font
+					color="white"> 연락처 </font></td>
+				<td>휴대전화 <select name="student_ph_num">
+						<option value="010">010</option>
+						<option value="011">011</option>
+						<option value="016">016</option>
+				</select> - <input type="text" name="student_ph_num2"> - <input type="text"
+					name="student_ph_num3"> <br> 
+					일반전화 <select name="student_call_num">
+						<option value="">선택</option>
+						<option value="052">052</option>
+						<option value="070">070</option>
+				</select> - <input type="text" name="student_call_num2"> - <input type="text"
+					name="student_call_num3"> <br> ※연락처는 둘 중 하나만 입력해도 됩니다.
+				</td>
+			<tr>
+				<td align="center" height=40px bgcolor="gray"><font
+					color="white"> 우편번호 </font></td>
+				<td><input type="text" name="student_zip_code"> <input
+					type="button" name="student_zip_code" value="㉾주소검색"></td>
+			</tr>
+
+			<tr>
+				<td align="center" height=40px bgcolor="gray"><font
+					color="white"> 주소 </font></td>
+				<td><input type="text" name="student_address" style="width: 500px;">
+					<input type="text" name="student_address2"></td>
+			</tr>
+
+			<tr>
+				<td align="center" height=40px bgcolor="gray"><font
+					color="white"> 정보수신여부 </font></td>
+				<td>서비스 및 이벤트 소식을 
+					<input type="checkbox" name="student_infor"
+					value="email"> Email로 수신하겠습니다. 
+					<input type="checkbox"name="student_infor"
+					value="sms"> SMS로 수신하겠습니다.
+			</tr>
+		</table>
+		<P>
+			<input type="submit" value="제출">
+		</P>
+	</form>
+</body>
+</html>
