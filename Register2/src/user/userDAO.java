@@ -26,13 +26,14 @@ public class userDAO {
 	public int registerCheck(String userID) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String SQL = "SELECT * FROM USER WHER userID = ?";
+		String SQL = "SELECT * FROM USER WHERE userID = ?";
+
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
 			
 			rs = pstmt.executeQuery();
-			System.out.println("여기까지 실행됨");
+			
 			if (rs.next() || userID.equals("")) {
 				
 				return 0; // 이미 존재하는 회원 ID이거나 입력하지 않을 경우
@@ -60,7 +61,6 @@ public class userDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String SQL = "INSERT INTO USER VALUES (?, ?, ?, ?, ?, ?, ?)";
-		System.out.print("디비 인풋 성공");
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID); // 유저에서 얻어온 값 받음
