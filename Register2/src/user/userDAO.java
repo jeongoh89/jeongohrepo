@@ -5,18 +5,23 @@ import java.sql.*;
 public class userDAO {
 
 	private Connection conn;
-
+	private static userDAO instance;
 	public userDAO() { 
+		
 		try {
-			Class.forName("com.mysql.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/rigister?useSSL=false", "root", "1234");
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/register?useSSL=false", "root", "1234");
 			System.out.println("성공 : " + conn);
 		} catch (SQLException ex) {
 			System.out.println("SQLException" + ex);
 		} catch (Exception ex) {
 			System.out.println("Exception" + ex.getMessage());
 		}
-
+	}
+	public static userDAO getInstance() {
+		if(instance == null)
+			instance = new userDAO();
+		return instance;
 	}
 	public int registerCheck(String userID) {
 		PreparedStatement pstmt = null;
@@ -25,9 +30,13 @@ public class userDAO {
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
+			
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				return 0; // 이미 존재하는 회원
+			System.out.println("여기까지 실행됨");
+			if (rs.next() || userID.equals("")) {
+				
+				return 0; // 이미 존재하는 회원 ID이거나 입력하지 않을 경우
+				
 			} else {
 				return 1; // 가입 가능한 회원 아이디
 			}
@@ -35,7 +44,7 @@ public class userDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null)
+				if (rs != null) 
 					rs.close();
 				if (pstmt != null)
 					pstmt.close();
@@ -51,12 +60,13 @@ public class userDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String SQL = "INSERT INTO USER VALUES (?, ?, ?, ?, ?, ?, ?)";
+		System.out.print("디비 인풋 성공");
 		try {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID); // 유저에서 얻어온 값 받음
 			pstmt.setString(2, userPassword);
 			pstmt.setString(3, userName);
-			pstmt.setInt(5,Integer.parseInt(userNumber)); //문자열을 숫자로 변환
+			pstmt.setInt(4,Integer.parseInt(userNumber)); //문자열을 숫자로 변환
 			pstmt.setInt(5,Integer.parseInt(userAge));
 			pstmt.setString(6, userGender);
 			pstmt.setString(7, userEmail);
@@ -77,3 +87,4 @@ public class userDAO {
 		return -1; // 데이터베이스 오류
 	}
 }
+	

@@ -8,6 +8,7 @@ public class userDTO {
 	String userAge;
 	String userGender;
 	String userEmail;
+	
 	public String getUserID() {
 		return userID;
 	}
@@ -50,6 +51,4 @@ public class userDTO {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-	
-	
 }
